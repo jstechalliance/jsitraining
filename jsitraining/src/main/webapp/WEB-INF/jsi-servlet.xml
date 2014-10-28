@@ -32,48 +32,7 @@
 		<!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="1000000" />
 	</bean>
-	<!-- REST -->
-	<bean
-		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="order" value="1" />
-		<property name="contentNegotiationManager">
-			<bean class="org.springframework.web.accept.ContentNegotiationManager">
-				<constructor-arg>
-					<bean
-						class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
-						<constructor-arg>
-							<map>
-								<entry key="json" value="application/json" />
-								<entry key="xml" value="application/xml" />
-							</map>
-						</constructor-arg>
-					</bean>
-				</constructor-arg>
-			</bean>
-		</property>
-
-
-		<property name="defaultViews">
-			<list>
-				<!-- JSON View -->
-				<bean
-					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
-
-				<!-- XML View -->
-				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
-					<constructor-arg>
-						<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
-							<property name="packagesToScan">
-								<list>
-									<value>com.abstractlayers.demo.dto</value>
-								</list>
-							</property>
-						</bean>
-					</constructor-arg>
-				</bean>
-			</list>
-		</property>
-	</bean>
+	
 
 
 </beans>
